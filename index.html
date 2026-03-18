@@ -31,17 +31,15 @@ body {
 
 #contenido { display: none; }
 
-input, button {
-  padding: 10px;
-  margin-top: 10px;
+button {
+  padding: 10px 20px;
+  margin-top: 20px;
   border-radius: 10px;
   border: none;
-}
-
-button {
   background: white;
   color: #ff5e78;
   cursor: pointer;
+  font-size: 16px;
 }
 
 .pantalla {
@@ -55,9 +53,9 @@ button {
 
 .carta {
   max-width: 90%;
-  font-size: 16px;
+  font-size: 18px;
   opacity: 0;
-  transition: 2s;
+  transition: 1.5s;
 }
 
 .contador {
@@ -82,92 +80,45 @@ button {
 
 <div id="login">
   <h2>💖 Esta página es solo para alguien especial 💖</h2>
-  <p>Una fecha que cambió todo...</p>
   <input type="password" id="pass" placeholder="Contraseña">
   <button onclick="verificar()">Entrar</button>
 </div>
 
 <div id="contenido">
 
-  <!-- TEXTO INICIAL -->
-  <div id="inicioTexto" class="pantalla activa">
-    <p>
-    Holaa holaa mishh 💗<br><br>
-    Estos últimos días estuve pensando en hacerte algo…<br>
-    algo solo para vos.<br><br>
-    Para mi querida novia,<br>
-    mi hermosa niña,<br>
-    la chica que más amo.<br><br>
-    Y se me ocurrió hacer esto para vos…<br><br>
-    Espero que te guste mucho 🥺<br><br>
-    Te amo 💗
-    </p>
-
+  <!-- Pantallas de mensajes -->
+  <div id="pantalla1" class="pantalla activa">
+    <p>¿Qué significás para mí? 💖<br>
+    Mía, significás todo en mi vida… aunque estemos lejos, siento tu presencia en cada mensaje, en cada llamada, en cada detalle que compartimos. Me hacés sonreír, me hacés sentir amado y acompañado todos los días, y cada momento contigo, aunque sea virtual, es único 💗</p>
     <button onclick="siguiente()">Siguiente 💗</button>
   </div>
 
-  <!-- CARTA -->
-  <div id="cartaPantalla" class="pantalla">
-    <div class="carta" id="carta">
+  <div id="pantalla2" class="pantalla">
+    <p>¿Qué me hacés sentir?<br>
+    Me hacés feliz, emocionado y lleno de alegría. Cada mensaje, cada videollamada, cada momento que pasamos juntos, hace que mi día sea mejor. La manera en la que me hablás y me hacés reír, aunque sea a distancia, me hace sentir que tenemos algo muy especial 💞</p>
+    <button onclick="siguiente()">Siguiente 💗</button>
+  </div>
 
-    Bueno, desde que estoy con vos, siento que todo es más bonito, hermoso, no sé como explicarlo, pero desde que llegaste a mi vida, algo cambió en mí.<br><br>
+  <div id="pantalla3" class="pantalla">
+    <p>¿Qué recuerdos de nosotros me hacen sonreír? 💌<br>
+    Recuerdo cuando aceptaste ser mi novia y la cartita que me diste, todavía me emociono. También nuestras largas llamadas, los juegos juntos, los mensajes que nos mandamos, todo eso me hace sentir afortunado de tenerte en mi vida 🥺💗</p>
+    <button onclick="siguiente()">Siguiente 💗</button>
+  </div>
 
-    Sos una de las personas que más amo con mi alma y me importás un montón. Estoy completamente enamorado de vos,<br>
-    de cómo sos, de lo perfecta que sos para mí.<br><br>
+  <div id="pantalla4" class="pantalla">
+    <p>¿Qué cambió en mí desde que estás? 💖<br>
+    Ahora me emociono con cada mensaje tuyo, estoy más atento, más feliz y más enamorado. Aunque estemos lejos, todo lo que hacemos juntos me recuerda lo importante que sos en mi vida 💗</p>
+    <button onclick="siguiente()">Siguiente 💗</button>
+  </div>
 
-    Me encanta todo de vos:<br>
-    tu cara, tu pelo, tus ojos, tu nariz, tu boca, tu voz, todo…<br>
-    pero más que nada, me encanta cómo me hacés sentir.<br><br>
+  <div id="pantalla5" class="pantalla">
+    <p>¿Qué quiero para nosotros? 💞<br>
+    Quiero seguir compartiendo risas, charlas, juegos y momentos juntos. Aunque sea a distancia, cada día con vos es especial. Te elegiría a vos, una y mil veces más. Te amo con todo mi corazón 💖</p>
+    <button onclick="siguiente()">Siguiente 💗</button>
+  </div>
 
-    Porque no es solo lo linda que sos…<br>
-    es la forma en la que me hablás,<br>
-    la forma en la que me tratás,<br>
-    y todo lo que generás en mí sin siquiera intentarlo 💗<br><br>
-
-    Cada palabra tuya tiene algo especial,<br>
-    cada mensaje, cada llamada...<br>
-    todo con vos se siente distinto.<br><br>
-
-    A veces me pongo a pensar en vos sin darme cuenta,<br>
-    y termino sonriendo solo,<br>
-    porque de verdad me hacés feliz.<br><br>
-
-    Todavía me acuerdo de cuando aceptaste ser mi novia…<br>
-    y de la cartita que me diste,<br>
-    son cosas que nunca voy a olvidar.<br><br>
-
-    Son momentos que se quedaron conmigo,<br>
-    y que cada vez que los recuerdo,<br>
-    me hacen recordar lo afortunado que soy de tenerte conmigo 💗<br><br>
-
-    Desde que estoy con vos, cambiaron muchas cosas en mí…<br>
-    como quedarme despierto solo esperando un mensaje tuyo,<br>
-    o estar atento a vos todo el tiempo.<br><br>
-
-    Y aunque parezcan cosas simples,<br>
-    para mí significan mucho,<br>
-    porque hablan de lo importante que sos en mi vida.<br><br>
-
-    Pero lo más importante es que soy realmente feliz con vos.<br><br>
-
-    Y no solo ahora,<br>
-    también quiero seguir siéndolo con vos,<br>
-    seguir compartiendo momentos, risas, charlas, todo…<br><br>
-
-    Porque no me imagino esto con otra persona que no seas vos…<br>
-    quiero una vida contigo.<br>
-    Te amo con el alma.<br><br>
-
-    Y si tuviera que elegir otra vez…<br>
-    te elegiría a vos, una y mil veces más 💞<br><br>
-
-    No importa lo que pase,<br>
-    yo voy a querer seguir estando con vos.<br><br>
-
-    Te amo muchísimo, Mía 💗
-
-    </div>
-
+  <div id="pantallaFinal" class="pantalla">
+    <p>Prometo que algún día, podré verte y abrazarte 💖</p>
     <div class="contador" id="contador"></div>
   </div>
 
@@ -179,16 +130,17 @@ button {
 
 <script>
 
+let pantallaActual = 1;
+const totalPantallas = 6; // 5 mensajes + 1 final
+
 function verificar() {
   let pass = document.getElementById("pass").value;
-
   if(pass === "060126") {
     document.getElementById("login").style.display = "none";
     document.getElementById("contenido").style.display = "flex";
 
     let musica = document.getElementById("musica");
     musica.volume = 0.3;
-
     musica.play().catch(() => {
       document.body.addEventListener("click", () => musica.play(), { once: true });
     });
@@ -198,13 +150,14 @@ function verificar() {
 }
 
 function siguiente() {
-  document.getElementById("inicioTexto").classList.remove("activa");
-  document.getElementById("cartaPantalla").classList.add("activa");
-
-  setTimeout(() => {
-    document.getElementById("carta").style.opacity = 1;
-    actualizarContador();
-  }, 300);
+  document.getElementById(`pantalla${pantallaActual}`).classList.remove("activa");
+  pantallaActual++;
+  if(pantallaActual <= totalPantallas) {
+    document.getElementById(`pantalla${pantallaActual}`).classList.add("activa");
+    if(pantallaActual === totalPantallas) {
+      actualizarContador();
+    }
+  }
 }
 
 function corazones() {
