@@ -2,193 +2,200 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Para Mía 💗</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para mi Mía 💗</title>
 <style>
 body {
-  margin: 0;
-  font-family: Arial;
-  background: linear-gradient(45deg, #ff9a9e, #fad0c4, #ffdde1);
-  background-size: 400% 400%;
-  animation: fondo 10s infinite alternate;
-  color: white;
-  text-align: center;
-  overflow: hidden;
-}
-
-@keyframes fondo {
-  0% {background-position: left;}
-  100% {background-position: right;}
-}
-
-#login, #contenido {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-#contenido { display: none; }
-
-button {
-  padding: 10px 20px;
-  margin-top: 20px;
-  border-radius: 10px;
-  border: none;
-  background: white;
-  color: #ff5e78;
-  cursor: pointer;
-  font-size: 16px;
+  margin:0;
+  padding:0;
+  font-family: 'Arial', sans-serif;
+  background: #ffe6f0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+  flex-direction:column;
+  overflow-x:hidden;
 }
 
 .pantalla {
-  display: none;
-  max-width: 90%;
+  display:none;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  max-width: 600px;
+  padding:20px;
 }
 
-.activa {
-  display: block;
+button {
+  margin-top:20px;
+  padding:10px 20px;
+  font-size:16px;
+  border:none;
+  border-radius:10px;
+  background:#ff66b2;
+  color:white;
+  cursor:pointer;
 }
 
-.carta {
-  max-width: 90%;
-  font-size: 18px;
-  opacity: 0;
-  transition: 1.5s;
+.fotos {
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-top:20px;
 }
 
-.contador {
-  margin-top: 20px;
+.fotos img {
+  width:150px;
+  margin:10px;
+  border-radius:15px;
 }
 
-/* corazones */
 .corazon {
   position: absolute;
-  animation: subir 5s linear infinite;
+  color: #ff66b2;
+  font-size: 20px;
+  animation: float 5s linear infinite;
 }
 
-@keyframes subir {
-  from { transform: translateY(100vh); opacity: 1;}
-  to { transform: translateY(-10vh); opacity: 0;}
+@keyframes float {
+  0% {transform: translateY(0) translateX(0);}
+  50% {transform: translateY(-200px) translateX(30px);}
+  100% {transform: translateY(-400px) translateX(-30px);}
 }
 
 </style>
 </head>
-
 <body>
 
-<div id="login">
-  <h2>💖 Esta página es solo para alguien especial 💖</h2>
+<!-- Música -->
+<audio id="musica" src="mrsmagic.mp3" loop></audio>
+
+<!-- Pantalla de contraseña -->
+<div id="login" class="pantalla" style="display:flex;">
+  <h2>Ingresá la contraseña 💗</h2>
   <input type="password" id="pass" placeholder="Contraseña">
   <button onclick="verificar()">Entrar</button>
 </div>
 
+<!-- Contenido principal -->
 <div id="contenido">
 
-  <!-- Pantalla inicial: saludo -->
-  <div id="pantalla0" class="pantalla activa">
-    <p>HOLAHOLAA MISHHH.<br>
-    Estos últimos días estaba pensando en hacerte algo para ti, para mi querida novia, mi hermosa niña, a la chica que más amo, yyy se me ocurrió hacer esto para ti, espero que te guste mucho, te amo💗</p>
-    <button onclick="siguiente()">Siguiente 💗</button>
-  </div>
+<!-- Pantalla 0 -->
+<div id="pantalla0" class="pantalla" style="display:flex; flex-direction:column;">
+  <p>HOLAHOLAA MISHHH.  
+Estos últimos días estaba pensando en hacerte algo para ti, para mi querida novia, mi hermosa niña, a la chica que más amo, yyy se me ocurrió hacer esto para ti, espero que te guste mucho, te amo 💗</p>
+  <button onclick="siguiente(0)">Siguiente 💖</button>
+</div>
 
-  <!-- Pantallas de mensajes -->
-  <div id="pantalla1" class="pantalla">
-    <p>¿Qué significás para mí? 💖<br>
-    Mía, significás todo en mi vida… aunque estemos lejos, siento tu presencia en cada mensaje, en cada llamada, en cada detalle que compartimos. Me hacés sonreír, me hacés sentir amado y acompañado todos los días, y cada momento contigo, aunque sea virtual, es único 💗</p>
-    <button onclick="siguiente()">Siguiente 💗</button>
-  </div>
+<!-- Pantalla 1 -->
+<div id="pantalla1" class="pantalla">
+  <p>¿Qué significás para mí? 💖  
+Mía, significás todo en mi vida… aunque estemos lejos, siento tu presencia en cada mensaje, en cada llamada, en cada detalle que compartimos. Me hacés sonreír, me hacés sentir amado y acompañado todos los días, y cada momento contigo, aunque sea virtual, es único 💗</p>
+  <button onclick="siguiente(1)">Siguiente 💖</button>
+</div>
 
-  <div id="pantalla2" class="pantalla">
-    <p>¿Qué me hacés sentir?<br>
-    Me hacés feliz, emocionado y lleno de alegría. Cada mensaje, cada videollamada, cada momento que pasamos juntos, hace que mi día sea mejor. La manera en la que me hablás y me hacés reír, aunque sea a distancia, me hace sentir que tenemos algo muy especial 💞</p>
-    <button onclick="siguiente()">Siguiente 💗</button>
-  </div>
+<!-- Pantalla 2 -->
+<div id="pantalla2" class="pantalla">
+  <p>¿Qué me hacés sentir?  
+Me hacés feliz, emocionado y lleno de alegría. Cada mensaje, cada momento que pasamos juntos, hace que mi día sea mejor. La manera en la que me hablás y me hacés reír, aunque sea a distancia, me hace sentir que tenemos algo muy especial 💞</p>
+  <button onclick="siguiente(2)">Siguiente 💖</button>
+</div>
 
-  <div id="pantalla3" class="pantalla">
-    <p>¿Qué recuerdos de nosotros me hacen sonreír? 💌<br>
-    Recuerdo cuando aceptaste ser mi novia y la cartita que me diste, todavía me emociono. También nuestras largas llamadas, los juegos juntos, los mensajes que nos mandamos, todo eso me hace sentir afortunado de tenerte en mi vida 🥺💗</p>
-    <button onclick="siguiente()">Siguiente 💗</button>
-  </div>
+<!-- Pantalla 3 -->
+<div id="pantalla3" class="pantalla">
+  <p>¿Qué recuerdos de nosotros me hacen sonreír? 💌  
+Recuerdo cuando aceptaste ser mi novia y la cartita que me diste, todavía me emociono. También nuestras largas llamadas, los juegos juntos, los mensajes que nos mandamos, todo eso me hace sentir afortunado de tenerte en mi vida 🥺💗</p>
+  <button onclick="siguiente(3)">Siguiente 💖</button>
+</div>
 
-  <div id="pantalla4" class="pantalla">
-    <p>¿Qué cambió en mí desde que estás? 💖<br>
-    Ahora me emociono con cada mensaje tuyo, estoy más atento, más feliz y más enamorado. Aunque estemos lejos, todo lo que hacemos juntos me recuerda lo importante que sos en mi vida 💗</p>
-    <button onclick="siguiente()">Siguiente 💗</button>
-  </div>
+<!-- Pantalla 4 -->
+<div id="pantalla4" class="pantalla">
+  <p>¿Qué cambió en mí desde que estás? 💖  
+Ahora me emociono con cada mensaje tuyo, estoy más atento, más feliz y más enamorado. Aunque estemos lejos, todo lo que hacemos juntos me recuerda lo importante que sos en mi vida 💗</p>
+  <button onclick="siguiente(4)">Siguiente 💖</button>
+</div>
 
-  <div id="pantalla5" class="pantalla">
-    <p>¿Qué quiero para nosotros? 💞<br>
-    Quiero seguir compartiendo risas, charlas, juegos y momentos juntos. Aunque sea a distancia, cada día con vos es especial. Te elegiría a vos, una y mil veces más. Te amo con todo mi corazón 💖</p>
-    <button onclick="siguiente()">Siguiente 💗</button>
-  </div>
+<!-- Pantalla 5 -->
+<div id="pantalla5" class="pantalla">
+  <p>¿Qué quiero para nosotros? 💞  
+Quiero seguir compartiendo risas, charlas, juegos y momentos juntos. Aunque sea a distancia, cada día con vos es especial. Te elegiría a vos, una y mil veces más. Te amo con todo mi corazón 💖</p>
+  <button onclick="siguiente(5)">Siguiente 💖</button>
+</div>
 
-  <!-- Pantalla final -->
-  <div id="pantallaFinal" class="pantalla">
-    <p>Prometo que algún día, podré verte y abrazarte 💖</p>
-    <div class="contador" id="contador"></div>
+<!-- Pantalla 6: fotos de ustedes -->
+<div id="pantalla6" class="pantalla">
+  <p>Nuestros momentos juntos 💞</p>
+  <div class="fotos">
+    <img src="imagen1.png" alt="nosotros">
+    <img src="imagen2.png" alt="nosotros">
+    <img src="imagen3.png" alt="nosotros">
   </div>
+  <button onclick="siguiente(6)">Siguiente 💖</button>
+</div>
 
-  <!-- Música -->
-  <audio id="musica" loop>
-    <source src="mrsmagic.mp3" type="audio/mpeg">
-  </audio>
+<!-- Pantalla 7: texto final + fotos referencias -->
+<div id="pantalla7" class="pantalla">
+  <p>Amor, quiero que seamos igual de unidos como PeterBot a Pollo, como K1ng a Fazer.  
+Un amor como Gumball y Penny, como Wall-E y Eva, como Mickey y Minnie, como Homero y Marge, y como Messi y Antonela 🥹💗</p>
+  <div class="fotos">
+    <img src="rf1.png" alt="referencia">
+    <img src="rf2.png" alt="referencia">
+    <img src="rf3.png" alt="referencia">
+    <img src="rf4.png" alt="referencia">
+    <img src="rf5.png" alt="referencia">
+    <img src="rf6.png" alt="referencia">
+    <img src="rf7.png" alt="referencia">
+  </div>
+  <div class="contador" id="contador"></div>
+</div>
 
 </div>
 
 <script>
-
-let pantallaActual = 0;
-const totalPantallas = 6; // 0 inicial + 5 mensajes + final
-
-function verificar() {
-  let pass = document.getElementById("pass").value;
-  if(pass === "060126") {
-    document.getElementById("login").style.display = "none";
-    document.getElementById("contenido").style.display = "flex";
-
-    let musica = document.getElementById("musica");
-    musica.volume = 0.3;
-    musica.play().catch(() => {
-      document.body.addEventListener("click", () => musica.play(), { once: true });
-    });
-
-    corazones();
+// Contraseña codificada en Base64
+function verificar(){
+  const passIngresada = document.getElementById("pass").value;
+  const passReal = atob("MDYwMTI2"); // 060126 codificado
+  if(passIngresada === passReal){
+    document.getElementById("login").style.display="none";
+    document.getElementById("contenido").style.display="flex";
+    document.getElementById("musica").play();
+    document.getElementById("pantalla0").style.display="flex";
+  } else {
+    alert("Contraseña incorrecta 💔");
   }
 }
 
-function siguiente() {
-  document.getElementById(`pantalla${pantallaActual}`).classList.remove("activa");
-  pantallaActual++;
-  if(pantallaActual <= totalPantallas) {
-    document.getElementById(`pantalla${pantallaActual}`).classList.add("activa");
-    if(pantallaActual === totalPantallas) {
-      actualizarContador();
-    }
-  }
+// Función para avanzar de pantalla
+function siguiente(num){
+  document.getElementById("pantalla"+num).style.display="none";
+  const siguienteNum = num+1;
+  const next = document.getElementById("pantalla"+siguienteNum);
+  if(next) next.style.display="flex";
 }
 
-function corazones() {
-  setInterval(() => {
-    let c = document.createElement("div");
-    c.innerHTML = "💗";
-    c.className = "corazon";
-    c.style.left = Math.random() * 100 + "vw";
-    document.body.appendChild(c);
-    setTimeout(() => c.remove(), 5000);
-  }, 300);
+// Contador de días juntos (ejemplo simple)
+const inicio = new Date("2026-01-06"); // fecha que quieras
+function actualizarContador(){
+  const hoy = new Date();
+  const diff = hoy - inicio;
+  const dias = Math.floor(diff / (1000*60*60*24));
+  document.querySelectorAll("#contador").forEach(el => el.textContent = `Días juntos: ${dias}`);
 }
+actualizarContador();
+setInterval(actualizarContador, 3600000);
 
-let fechaInicio = new Date("2026-01-06");
-
-function actualizarContador() {
-  let hoy = new Date();
-  let dias = Math.floor((hoy - fechaInicio)/(1000*60*60*24));
-  document.getElementById("contador").innerText =
-    "💞 Llevamos " + dias + " días juntos 💞";
+// Corazones flotando
+function crearCorazon(){
+  const corazon = document.createElement("div");
+  corazon.classList.add("corazon");
+  corazon.style.left = Math.random()*window.innerWidth + "px";
+  corazon.textContent = "💖";
+  document.body.appendChild(corazon);
+  setTimeout(()=> corazon.remove(),5000);
 }
-
+setInterval(crearCorazon, 500);
 </script>
 
 </body>
