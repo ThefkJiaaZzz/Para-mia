@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Para Mía 💗</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: black;
+  color: white;
+  text-align: center;
+  overflow: hidden;
+}
+
+#login, #contenido {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+input {
+  padding: 10px;
+  font-size: 18px;
+  border-radius: 10px;
+  border: none;
+  margin-top: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 10px;
+  background: pink;
+  cursor: pointer;
+}
+
+#contenido {
+  display: none;
+}
+
+.mensaje {
+  font-size: 24px;
+  opacity: 0;
+  position: absolute;
+}
+
+.carta {
+  max-width: 600px;
+  opacity: 0;
+}
+
+.contador {
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="login">
+  <h2>💖 Esta página es solo para alguien especial 💖</h2>
+  <p>Una fecha que cambió todo...</p>
+  <input type="password" id="pass" placeholder="Contraseña">
+  <button onclick="verificar()">Entrar</button>
+</div>
+
+<div id="contenido">
+
+  <div class="mensaje" id="m1">Desde que llegaste a mi vida...</div>
+  <div class="mensaje" id="m2">Todo es más lindo...</div>
+  <div class="mensaje" id="m3">Sos una persona increíble...</div>
+  <div class="mensaje" id="m4">Y de verdad...</div>
+  <div class="mensaje" id="m5">Te amo muchísimo, Mía 💗</div>
+
+  <div class="carta" id="carta">
+    Desde que estoy con vos soy realmente feliz.<br><br>
+    Sos la mejor persona que me pudo pasar,<br>
+    hermosa, increíble… perfecta para mí.<br><br>
+    Gracias por elegirme cada día 💗<br><br>
+    Y si tuviera que elegir otra vez...<br>
+    te elegiría a vos una y mil veces más 💞
+  </div>
+
+  <div class="contador" id="contador"></div>
+
+  <audio id="musica" loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3">
+  </audio>
+
+</div>
+
+<script>
+
+function verificar() {
+  let pass = document.getElementById("pass").value;
+  if(pass === "060126") {
+    document.getElementById("login").style.display = "none";
+    document.getElementById("contenido").style.display = "flex";
+    document.getElementById("musica").play();
+    iniciarMensajes();
+  }
+}
+
+let mensajes = ["m1","m2","m3","m4","m5"];
+
+function iniciarMensajes() {
+  let i = 0;
+
+  function mostrar() {
+    if(i > 0) {
+      document.getElementById(mensajes[i-1]).style.opacity = 0;
+    }
+
+    if(i < mensajes.length) {
+      let el = document.getElementById(mensajes[i]);
+      el.style.opacity = 1;
+      el.style.position = "relative";
+      i++;
+      setTimeout(mostrar, 2500);
+    } else {
+      document.getElementById("carta").style.opacity = 1;
+      actualizarContador();
+    }
+  }
+
+  mostrar();
+}
+
+let fechaInicio = new Date("2026-01-06");
+
+function actualizarContador() {
+  let hoy = new Date();
+  let dias = Math.floor((hoy - fechaInicio) / (1000*60*60*24));
+  document.getElementById("contador").innerText =
+    "💞 Llevamos " + dias + " días juntos 💞";
+}
+
+</script>
+
+</body>
+</html>
