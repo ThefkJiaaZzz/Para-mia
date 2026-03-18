@@ -5,19 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Para mi Mía 💗</title>
 <style>
+/* Fondo degradado pastel */
 body {
   margin:0;
   padding:0;
   font-family: 'Arial', sans-serif;
-  background: #ffe6f0;
+  background: linear-gradient(135deg, #ffe6f0, #ffd1e6);
   display:flex;
   justify-content:center;
   align-items:center;
   min-height:100vh;
   flex-direction:column;
   overflow-x:hidden;
+  position:relative;
 }
 
+/* Pantallas */
 .pantalla {
   display:none;
   flex-direction:column;
@@ -25,45 +28,82 @@ body {
   text-align:center;
   max-width: 600px;
   padding:20px;
+  opacity:0;
+  transition: opacity 0.5s ease;
 }
 
+/* Mostrar pantalla con fade-in */
+.pantalla.activa {
+  display:flex;
+  opacity:1;
+}
+
+/* Botones */
 button {
   margin-top:20px;
-  padding:10px 20px;
+  padding:10px 25px;
   font-size:16px;
   border:none;
-  border-radius:10px;
+  border-radius:15px;
   background:#ff66b2;
   color:white;
   cursor:pointer;
+  box-shadow:0 4px 8px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+button:hover {
+  transform: translateY(-3px);
+  box-shadow:0 6px 12px rgba(0,0,0,0.3);
 }
 
+/* Fotos */
 .fotos {
   display:flex;
   justify-content:center;
   flex-wrap:wrap;
   margin-top:20px;
 }
-
 .fotos img {
   width:150px;
-  height:150px; /* fija alto */
+  height:150px;
   margin:10px;
   border-radius:15px;
-  object-fit: cover; /* mantiene proporción y evita estirar */
+  object-fit: cover;
+  box-shadow:0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+.fotos img:hover {
+  transform: scale(1.05);
 }
 
+/* Corazones flotando */
 .corazon {
   position: absolute;
   color: #ff66b2;
   font-size: 20px;
   animation: float 5s linear infinite;
+  pointer-events:none;
 }
 
 @keyframes float {
   0% {transform: translateY(0) translateX(0);}
   50% {transform: translateY(-200px) translateX(30px);}
   100% {transform: translateY(-400px) translateX(-30px);}
+}
+
+/* Burbujas sutiles */
+.burbuja {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: rgba(255,255,255,0.6);
+  border-radius:50%;
+  animation: subir 6s linear infinite;
+  pointer-events:none;
+}
+@keyframes subir {
+  0% {transform: translateY(100vh);}
+  100% {transform: translateY(-50px);}
 }
 </style>
 </head>
@@ -72,70 +112,63 @@ button {
 <!-- Música -->
 <audio id="musica" src="mrsmagic.mp3" loop></audio>
 
-<!-- Pantalla de contraseña -->
-<div id="login" class="pantalla" style="display:flex;">
+<!-- Pantalla de login -->
+<div id="login" class="pantalla activa" style="flex-direction:column; opacity:1;">
   <h2>Ingresá la contraseña 💗</h2>
   <input type="password" id="pass" placeholder="Contraseña">
   <button onclick="verificar()">Entrar</button>
 </div>
 
-<!-- Contenido principal oculto por defecto -->
-<div id="contenido" style="display:none;">
+<!-- Contenido principal oculto -->
+<div id="contenido" style="display:flex; flex-direction:column; align-items:center;">
 
-<!-- Pantalla 0 -->
-<div id="pantalla0" class="pantalla" style="flex-direction:column;">
+<!-- Pantallas -->
+<div id="pantalla0" class="pantalla">
   <p>HOLAHOLAA MISHHH.  
 Estos últimos días estaba pensando en hacerte algo para ti, para mi querida novia, mi hermosa niña, a la chica que más amo, yyy se me ocurrió hacer esto para ti, espero que te guste mucho, te amo 💗</p>
   <button onclick="siguiente(0)">Siguiente 💖</button>
 </div>
 
-<!-- Pantalla 1 -->
 <div id="pantalla1" class="pantalla">
   <p>¿Qué significás para mí? 💖  
 Mía, significás todo en mi vida… aunque estemos lejos, siento tu presencia en cada mensaje, en cada llamada, en cada detalle que compartimos. Me hacés sonreír, me hacés sentir amado y acompañado todos los días, y cada momento contigo, aunque sea virtual, es único 💗</p>
   <button onclick="siguiente(1)">Siguiente 💖</button>
 </div>
 
-<!-- Pantalla 2 -->
 <div id="pantalla2" class="pantalla">
   <p>¿Qué me hacés sentir?  
 Me hacés feliz, emocionado y lleno de alegría. Cada mensaje, cada momento que pasamos juntos, hace que mi día sea mejor. La manera en la que me hablás y me hacés reír, aunque sea a distancia, me hace sentir que tenemos algo muy especial 💞</p>
   <button onclick="siguiente(2)">Siguiente 💖</button>
 </div>
 
-<!-- Pantalla 3 -->
 <div id="pantalla3" class="pantalla">
   <p>¿Qué recuerdos de nosotros me hacen sonreír? 💌  
 Recuerdo cuando aceptaste ser mi novia y la cartita que me diste, todavía me emociono. También nuestras largas llamadas, los juegos juntos, los mensajes que nos mandamos, todo eso me hace sentir afortunado de tenerte en mi vida 🥺💗</p>
   <button onclick="siguiente(3)">Siguiente 💖</button>
 </div>
 
-<!-- Pantalla 4 -->
 <div id="pantalla4" class="pantalla">
   <p>¿Qué cambió en mí desde que estás? 💖  
 Ahora me emociono con cada mensaje tuyo, estoy más atento, más feliz y más enamorado. Aunque estemos lejos, todo lo que hacemos juntos me recuerda lo importante que sos en mi vida 💗</p>
   <button onclick="siguiente(4)">Siguiente 💖</button>
 </div>
 
-<!-- Pantalla 5 -->
 <div id="pantalla5" class="pantalla">
   <p>¿Qué quiero para nosotros? 💞  
 Quiero seguir compartiendo risas, charlas, juegos y momentos juntos. Aunque sea a distancia, cada día con vos es especial. Te elegiría a vos, una y mil veces más. Te amo con todo mi corazón 💖</p>
   <button onclick="siguiente(5)">Siguiente 💖</button>
 </div>
 
-<!-- Pantalla 6: fotos de ustedes -->
 <div id="pantalla6" class="pantalla">
   <p>Nuestros momentos juntos 💞</p>
   <div class="fotos">
-    <img src="imagen1.png" alt="nosotros">
-    <img src="imagen2.png" alt="nosotros">
-    <img src="imagen3.png" alt="nosotros">
+    <img src="imagen1.jpg" alt="nosotros">
+    <img src="imagen2.jpg" alt="nosotros">
+    <img src="imagen3.jpg" alt="nosotros">
   </div>
   <button onclick="siguiente(6)">Siguiente 💖</button>
 </div>
 
-<!-- Pantalla 7: texto final + fotos referencias -->
 <div id="pantalla7" class="pantalla">
   <p>Amor, quiero que seamos igual de unidos como PeterBot a Pollo, como K1ng a Fazer.  
 Un amor como Gumball y Penny, como Wall-E y Eva, como Mickey y Minnie, como Homero y Marge, y como Messi y Antonela 🥹💗</p>
@@ -159,21 +192,28 @@ function verificar(){
   const passIngresada = document.getElementById("pass").value;
   const passReal = atob("MDYwMTI2"); // 060126 codificado
   if(passIngresada === passReal){
+    document.getElementById("login").classList.remove("activa");
     document.getElementById("login").style.display="none";
     document.getElementById("contenido").style.display="flex";
     document.getElementById("musica").play();
-    document.getElementById("pantalla0").style.display="flex";
+    document.getElementById("pantalla0").classList.add("activa");
   } else {
     alert("Contraseña incorrecta 💔");
   }
 }
 
-// Función para avanzar de pantalla
+// Función para avanzar de pantalla con fade
 function siguiente(num){
-  document.getElementById("pantalla"+num).style.display="none";
-  const siguienteNum = num+1;
-  const next = document.getElementById("pantalla"+siguienteNum);
-  if(next) next.style.display="flex";
+  const actual = document.getElementById("pantalla"+num);
+  actual.classList.remove("activa");
+  setTimeout(()=>{
+    actual.style.display="none";
+    const next = document.getElementById("pantalla"+(num+1));
+    if(next){
+      next.style.display="flex";
+      setTimeout(()=> next.classList.add("activa"), 50);
+    }
+  }, 300);
 }
 
 // Contador de días juntos
@@ -192,11 +232,25 @@ function crearCorazon(){
   const corazon = document.createElement("div");
   corazon.classList.add("corazon");
   corazon.style.left = Math.random()*window.innerWidth + "px";
+  corazon.style.fontSize = (15+Math.random()*15) + "px";
+  corazon.style.animationDuration = (4+Math.random()*3)+"s";
   corazon.textContent = "💖";
   document.body.appendChild(corazon);
   setTimeout(()=> corazon.remove(),5000);
 }
-setInterval(crearCorazon, 500);
+setInterval(crearCorazon, 400);
+
+// Burbujas suaves
+function crearBurbuja(){
+  const burbuja = document.createElement("div");
+  burbuja.classList.add("burbuja");
+  burbuja.style.left = Math.random()*window.innerWidth + "px";
+  burbuja.style.width = burbuja.style.height = (5+Math.random()*10)+"px";
+  burbuja.style.animationDuration = (4+Math.random()*3)+"s";
+  document.body.appendChild(burbuja);
+  setTimeout(()=> burbuja.remove(),6000);
+}
+setInterval(crearBurbuja, 600);
 </script>
 
 </body>
