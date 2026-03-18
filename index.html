@@ -86,8 +86,15 @@ button {
 
 <div id="contenido">
 
+  <!-- Pantalla inicial: saludo -->
+  <div id="pantalla0" class="pantalla activa">
+    <p>HOLAHOLAA MISHHH.<br>
+    Estos últimos días estaba pensando en hacerte algo para ti, para mi querida novia, mi hermosa niña, a la chica que más amo, yyy se me ocurrió hacer esto para ti, espero que te guste mucho, te amo💗</p>
+    <button onclick="siguiente()">Siguiente 💗</button>
+  </div>
+
   <!-- Pantallas de mensajes -->
-  <div id="pantalla1" class="pantalla activa">
+  <div id="pantalla1" class="pantalla">
     <p>¿Qué significás para mí? 💖<br>
     Mía, significás todo en mi vida… aunque estemos lejos, siento tu presencia en cada mensaje, en cada llamada, en cada detalle que compartimos. Me hacés sonreír, me hacés sentir amado y acompañado todos los días, y cada momento contigo, aunque sea virtual, es único 💗</p>
     <button onclick="siguiente()">Siguiente 💗</button>
@@ -117,11 +124,13 @@ button {
     <button onclick="siguiente()">Siguiente 💗</button>
   </div>
 
+  <!-- Pantalla final -->
   <div id="pantallaFinal" class="pantalla">
     <p>Prometo que algún día, podré verte y abrazarte 💖</p>
     <div class="contador" id="contador"></div>
   </div>
 
+  <!-- Música -->
   <audio id="musica" loop>
     <source src="mrsmagic.mp3" type="audio/mpeg">
   </audio>
@@ -130,8 +139,8 @@ button {
 
 <script>
 
-let pantallaActual = 1;
-const totalPantallas = 6; // 5 mensajes + 1 final
+let pantallaActual = 0;
+const totalPantallas = 6; // 0 inicial + 5 mensajes + final
 
 function verificar() {
   let pass = document.getElementById("pass").value;
