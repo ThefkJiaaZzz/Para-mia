@@ -63,7 +63,6 @@ button {
   50% {transform: translateY(-200px) translateX(30px);}
   100% {transform: translateY(-400px) translateX(-30px);}
 }
-
 </style>
 </head>
 <body>
@@ -78,11 +77,11 @@ button {
   <button onclick="verificar()">Entrar</button>
 </div>
 
-<!-- Contenido principal -->
-<div id="contenido">
+<!-- Contenido principal oculto por defecto -->
+<div id="contenido" style="display:none;">
 
 <!-- Pantalla 0 -->
-<div id="pantalla0" class="pantalla" style="display:flex; flex-direction:column;">
+<div id="pantalla0" class="pantalla" style="flex-direction:column;">
   <p>HOLAHOLAA MISHHH.  
 Estos últimos días estaba pensando en hacerte algo para ti, para mi querida novia, mi hermosa niña, a la chica que más amo, yyy se me ocurrió hacer esto para ti, espero que te guste mucho, te amo 💗</p>
   <button onclick="siguiente(0)">Siguiente 💖</button>
@@ -175,8 +174,8 @@ function siguiente(num){
   if(next) next.style.display="flex";
 }
 
-// Contador de días juntos (ejemplo simple)
-const inicio = new Date("2026-01-06"); // fecha que quieras
+// Contador de días juntos
+const inicio = new Date("2026-01-06"); 
 function actualizarContador(){
   const hoy = new Date();
   const diff = hoy - inicio;
